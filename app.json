@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Mastermind",
+    "slug": "Mastermind",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Mastermind"
+}
