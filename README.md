@@ -47,7 +47,7 @@ To install the project, follow these steps:
 
 ## Components
 
-The game consists of several React components, for example:
+The game consists of several components, for example:
 
 - ColorPicker: Allows the player to select a color.
 - GuessTrial: Represents a single guess attempt.
