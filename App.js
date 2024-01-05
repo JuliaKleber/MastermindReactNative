@@ -1,8 +1,8 @@
 // import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
-import SixColors from "./components/SixColors";
-import Trial from "./components/Trial";
+import ColorPicker from "./components/ColorPicker";
+import GuessTrial from "./components/GuessTrial";
 import Instruction from "./components/Instruction";
 import { globalStyles } from "./styles";
 
@@ -49,7 +49,7 @@ const App = () => {
   return (
     <ScrollView>
       <View style={globalStyles.container}>
-        <SixColors
+        <ColorPicker
           colors={colors}
           numberColors={numberColors}
           setCurrentColor={setCurrentColor}

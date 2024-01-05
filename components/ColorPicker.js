@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { globalStyles } from "../styles";
 
-const SixColors = ({ colors, numberColors, setCurrentColor, isResetGame }) => {
+const ColorPicker = ({ colors, numberColors, setCurrentColor, isResetGame }) => {
   const [areButtonsSelected, setAreButtonsSelected] = useState(
     Array(numberColors).fill(false)
   );
@@ -53,4 +53,4 @@ const styles = StyleSheet.create ({
   },
 });
 
-export default SixColors;
+export default ColorPicker;

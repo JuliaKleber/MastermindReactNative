@@ -11,7 +11,7 @@ import Output from "./Output";
 import QuestionPlayAgain from "./QuestionPlayAgain";
 import { globalStyles } from "../styles";
 
-const Trial = ({
+const GuessTrial = ({
   numberTrials,
   numberTrial,
   currentTrial,
@@ -115,4 +115,4 @@ const styles = StyleSheet.create ({
   }
 });
 
-export default Trial;
+export default GuessTrial;
