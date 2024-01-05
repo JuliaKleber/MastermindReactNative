@@ -24,11 +24,10 @@ const InputFields = ({
     <View style={[globalStyles.containerVertical, styles.margins]}>
       {chosenColors.map((color, index) => (
         <TouchableOpacity
-          style={[globalStyles.coloredField, styles.fieldSize, { backgroundColor: color }]}
+          style={[globalStyles.coloredField, { backgroundColor: color }, styles.fieldSize]}
           key={index}
           onPress={() => setColor(index)}
         >
-          <Text></Text>
         </TouchableOpacity>
       ))}
     </View>

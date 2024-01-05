@@ -2,7 +2,7 @@
 // which can be selected by the player by pressing
 
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { globalStyles } from "../styles";
 
 const ColorPicker = ({ colors, numberColors, setCurrentColor, isResetGame }) => {
@@ -32,10 +32,10 @@ const ColorPicker = ({ colors, numberColors, setCurrentColor, isResetGame }) => 
             globalStyles.coloredField,
             styles.fieldSize,
             areButtonsSelected[index] && styles.colorSelected,
+            {backgroundColor: fieldColor}
           ]}
           onPress={() => handleColorSelection(index)}
         >
-          <Text style={{backgroundColor: fieldColor}}></Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -44,8 +44,8 @@ const ColorPicker = ({ colors, numberColors, setCurrentColor, isResetGame }) => 
 
 const styles = StyleSheet.create ({
   fieldSize: {
-    aspectRation: 1,
-    width: '33%',
+    aspectRatio: 1,
+    width: '16.6%',
   },
 
   colorSelected: {

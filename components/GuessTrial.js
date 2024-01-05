@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import ColorPicker from "./ColorPicker";
 import InputFields from "./InputFields";
 import CheckProposedSolutionButton from "./CheckProposedSolutionButton";
 import Output from "./Output";
@@ -12,11 +13,11 @@ import QuestionPlayAgain from "./QuestionPlayAgain";
 import { globalStyles } from "../styles";
 
 const GuessTrial = ({
+  currentColor,
   numberTrials,
   numberTrial,
   currentTrial,
   setCurrentTrial,
-  currentColor,
   solution,
   numberInputFields,
   onResetGameAppComponent,
@@ -33,7 +34,7 @@ const GuessTrial = ({
 
   // Wenn sich der aktuelle Versuch ändert,
   // werden alle Versuche bis zum aktuellen Versuch angezeigt.
-  const isShown = numberTrial <= currentTrial;
+  // const isShown = numberTrial <= currentTrial;
 
   useEffect(() => {
     if (isResetGame) {
@@ -47,8 +48,8 @@ const GuessTrial = ({
   }, [isResetGame]);
 
   return (
-    <View style={[isShown ? styles.trialVisible : styles.trialNotVisible, globalStyles.card]}>
-      <Text style={globalStyles.title}>{numberTrial}. Versuch</Text>
+    <View style={[globalStyles.card, numberTrial < currentTrial && styles.smallCard]}>
+      <Text style={numberTrial === currentTrial ? globalStyles.title : styles.smallTitle}>{numberTrial}. Versuch</Text>
       <InputFields
         currentTrial={currentTrial}
         numberTrial={numberTrial}
@@ -74,6 +75,7 @@ const GuessTrial = ({
           numberInRightPlace={numberInRightPlace}
           numberInWrongPlace={numberInWrongPlace}
           numberInputFields={numberInputFields}
+          currentTrial={currentTrial}
           numberTrial={numberTrial}
           numberTrials={numberTrials}
           solution={solution}
@@ -87,32 +89,18 @@ const GuessTrial = ({
 };
 
 const styles = StyleSheet.create ({
-  trialVisible: {
-    // margin: 5,
-    // borderWidth: 1,
-    // borderRadius: 5,
-    // borderColor: "royalblue",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // width: 300,
-    // padding: 10,
-    // marginTop: 20,
-    // marginBottom: 20,
-    // // display: flex,
-    // // flexDirection: column,
-    // // alignItems: center,
-    // elevation: 2,
-    // borderRadius: 10,
+  smallCard: {
+    width: '40%',
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 5,
+    marginBottom: 5,
   },
-
-  trialNotVisible: {
-    display: "none",
+  smallTitle: {
+    fontSize: 12,
+    fontWeight: "bold",
+    textAlign: "center",
   },
-
-  title: {
-    // fontWeight: "bold",
-    // fontSize: 18,
-  }
 });
 
 export default GuessTrial;

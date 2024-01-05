@@ -1,22 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export const globalStyles = StyleSheet.create({
-
-  // button: {
-  //   border: 0,
-  //   borderRadius: 30,
-  //   // backgroundColor: '#4f30da',
-  //   // color: 'white',
-  //   width: 130,
-  //   height: 40,
-  //   fontSize: 18,
-  //   textAlign: 'center',
-  // },
-
-  // b: {
-  //   color: rgb(105, 1, 105),
-  // },
-
   container: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -25,11 +9,11 @@ export const globalStyles = StyleSheet.create({
   containerVertical: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     flexWrap: 'wrap',
   },
 
   card: {
-    width: '90%',
     padding: 20,
     marginTop: 20,
     marginBottom: 20,

@@ -11,6 +11,7 @@ const Output = ({
   numberInRightPlace,
   numberInWrongPlace,
   numberInputFields,
+  currentTrial,
   numberTrial,
   numberTrials,
   solution,
@@ -33,6 +34,8 @@ const Output = ({
           <OutputHowGoodWasYourProposal
             numberInRightPlace={numberInRightPlace}
             numberInWrongPlace={numberInWrongPlace}
+            numberTrial={numberTrial}
+            currentTrial={currentTrial}
           />
           <OutputOutOfTurns colorsSolution={solutionGerman} />
         </View>
@@ -45,6 +48,8 @@ const Output = ({
         <OutputHowGoodWasYourProposal
           numberInRightPlace={numberInRightPlace}
           numberInWrongPlace={numberInWrongPlace}
+          numberTrial={numberTrial}
+          currentTrial={currentTrial}
         />
       );
     }
