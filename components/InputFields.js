@@ -1,3 +1,5 @@
+// Represents the input fields of the numberTrial-th trial.
+
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { globalStyles } from "../styles";
@@ -9,22 +11,22 @@ const InputFields = ({
   userGuesses,
   setUserGuesses,
 }) => {
-  // Wenn eine Kachel des Versuchs angeklickt wird,
-  // wird die currentColor im Array chosenColors
-  // unter dem entsprechendem Index gespeichert.
+  
+  // If a field is clicked and the field belongs to the current trial,
+  // the currentColor is set to the field and saved to the userGuesses.
   const setColor = (index) => {
     if (currentTrial === numberTrial) {
-      const chosenColors = [...userGuesses[currentTrial - 1]];
+      const chosenColors = [...userGuesses[currentTrial]];
       chosenColors[index] = currentColor;
-      newUserGuesses = [...userGuesses];
-      newUserGuesses[currentTrial - 1] = chosenColors;
+      let newUserGuesses = [...userGuesses];
+      newUserGuesses[currentTrial] = chosenColors;
       setUserGuesses(newUserGuesses);
     }
   };
 
   return (
     <View style={[globalStyles.containerVertical, styles.margins]}>
-      {userGuesses[numberTrial - 1].map((color, index) => (
+      {userGuesses[numberTrial].map((color, index) => (
         <TouchableOpacity
           style={[globalStyles.coloredField, { backgroundColor: color }, styles.fieldSize]}
           key={index}

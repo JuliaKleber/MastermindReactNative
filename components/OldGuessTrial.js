@@ -1,59 +1,29 @@
-// Repräsentiert den numberTrial-ten Versuch.
-// Es wird angezeigt, wie viele Farben an der richtigen Stelle und wie viele
-// Farben an der falschen Stelle sind.
+// Represents the numberTrial-th trial.
+// The user guesses are shown as four colored boxes.
+// There is also an output message that tells the user how good the guess was.
 
-import React, { useEffect } from "react";
+import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { globalStyles } from "../styles";
 import InputFields from "./InputFields";
 import OutputHowGoodWasYourProposal from "./OutputHowGoodWasYourProposal";
 
 const OldGuessTrial = ({
-  currentColor,
-  numberTrials,
   numberTrial,
   currentTrial,
   userGuesses,
   qualityOfGuesses,
-  setUserGuesses,
-  numberInputFields,
-  isResetGame,
-  setIsResetGame,
 }) => {
 
-  useEffect(() => {
-    if (isResetGame) {
-      setUserGuesses(
-        Array(numberTrials).fill(Array(numberInputFields).fill("white"))
-      );
-      setProposalSent(false);
-      setEndOfGame(false);
-      if (numberTrial === numberTrials) {
-        setIsResetGame(false);
-      }
-    }
-  }, [isResetGame]);
-
   return (
-    <View
-      style={[
-        globalStyles.card,
-        numberTrial < currentTrial && styles.smallCard,
-      ]}
-    >
-      <Text
-        style={
-          numberTrial === currentTrial ? globalStyles.title : styles.smallTitle
-        }
-      >
-        {numberTrial}. Versuch
+    <View style={[globalStyles.card, styles.smallCard]}>
+      <Text style={styles.smallTitle}>
+        {numberTrial + 1}. Versuch
       </Text>
       <InputFields
-        currentTrial={currentTrial}
         numberTrial={numberTrial}
-        currentColor={currentColor}
+        currentTrial={currentTrial}
         userGuesses={userGuesses}
-        setUserGuesses={setUserGuesses}
       />
       <OutputHowGoodWasYourProposal
         qualityOfGuesses={qualityOfGuesses}

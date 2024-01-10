@@ -1,26 +1,26 @@
 // Representents the tiles with the colors,
 // which can be selected by the player by pressing
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { globalStyles } from "../styles";
 
-const ColorPicker = ({ colors, numberColors, setCurrentColor, isResetGame }) => {
-  const [areButtonsSelected, setAreButtonsSelected] = useState(
-    Array(numberColors).fill(false)
+const ColorPicker = ({ colors, colorsCount, setCurrentColor }) => {
+  const [selectedButtons, setSelectedButtons] = useState(
+    Array(colorsCount).fill(false)
   );
 
-  useEffect(() => {
-    if (isResetGame) {
-      setAreButtonsSelected(Array(numberColors).fill(false));
-    }
-  }, [isResetGame]);
-
   const handleColorSelection = (index) => {
-    const newButtonStates = Array(numberColors).fill(false);
-    newButtonStates[index] = true;
-    setAreButtonsSelected(newButtonStates);
-    setCurrentColor(colors[index]);
+    let newButtonStates = [];
+    if (selectedButtons[index] === true) {
+      newButtonStates = Array(colorsCount).fill(false);
+      setCurrentColor("white");
+    } else {
+      newButtonStates = Array(colorsCount).fill(false);
+      newButtonStates[index] = true;
+      setCurrentColor(colors[index]);
+    }
+    setSelectedButtons(newButtonStates);
   };
 
   return (
@@ -31,7 +31,7 @@ const ColorPicker = ({ colors, numberColors, setCurrentColor, isResetGame }) => 
           style={[
             globalStyles.coloredField,
             styles.fieldSize,
-            areButtonsSelected[index] && styles.colorSelected,
+            selectedButtons[index] && styles.colorSelected,
             {backgroundColor: fieldColor}
           ]}
           onPress={() => handleColorSelection(index)}

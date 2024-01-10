@@ -4,8 +4,8 @@ import { globalStyles } from "../styles";
 
 const OutputHowGoodWasYourProposal = ({
   qualityOfGuesses,
-  numberTrial,
   currentTrial,
+  numberTrial,
 }) => {
   const colorInRightPlace = qualityOfGuesses[numberTrial][0] === 1 ? "Farbe" : "Farben";
   const colorInWrongPlace = qualityOfGuesses[numberTrial][1] === 1 ? "Farbe" : "Farben";
