@@ -5,7 +5,7 @@ import { View, Button } from "react-native";
 
 const CheckProposedSolutionButton = ({
   solution,
-  chosenColors,
+  userGuesses,
   numberInputFields,
   currentTrial,
   setCurrentTrial,
@@ -20,9 +20,9 @@ const CheckProposedSolutionButton = ({
     // Wenn zwei Farben sowohl in der Lösung als auch in dem Lösungsvorschlag
     // an der gleichen Stelle vorkommen, werden Sie aus den beiden Arrays entfernt.
     const reducedSolution = solution.filter(
-      (color, i) => color !== chosenColors[i]
+      (color, i) => color !== userGuesses[currentTrial - 1][i]
     );
-    const reducedProposal = chosenColors.filter(
+    const reducedProposal = userGuesses[currentTrial - 1].filter(
       (color, i) => color !== solution[i]
     );
     const numberInRightPlace = solution.length - reducedSolution.length;

@@ -1,28 +1,30 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { globalStyles } from "../styles";
 
 const InputFields = ({
   currentTrial,
   numberTrial,
   currentColor,
-  chosenColors,
-  setChosenColors,
+  userGuesses,
+  setUserGuesses,
 }) => {
   // Wenn eine Kachel des Versuchs angeklickt wird,
   // wird die currentColor im Array chosenColors
   // unter dem entsprechendem Index gespeichert.
   const setColor = (index) => {
     if (currentTrial === numberTrial) {
-      const newChosenColors = [...chosenColors];
-      newChosenColors[index] = currentColor;
-      setChosenColors(newChosenColors);
+      const chosenColors = [...userGuesses[currentTrial - 1]];
+      chosenColors[index] = currentColor;
+      newUserGuesses = [...userGuesses];
+      newUserGuesses[currentTrial - 1] = chosenColors;
+      setUserGuesses(newUserGuesses);
     }
   };
 
   return (
     <View style={[globalStyles.containerVertical, styles.margins]}>
-      {chosenColors.map((color, index) => (
+      {userGuesses[numberTrial - 1].map((color, index) => (
         <TouchableOpacity
           style={[globalStyles.coloredField, { backgroundColor: color }, styles.fieldSize]}
           key={index}

@@ -8,8 +8,7 @@ import OutputSolutionFound from "./OutputSolutionFound";
 import OutputOutOfTurns from "./OutputOutOfTurns";
 
 const Output = ({
-  numberInRightPlace,
-  numberInWrongPlace,
+  qualityOfGuesses,
   numberInputFields,
   currentTrial,
   numberTrial,

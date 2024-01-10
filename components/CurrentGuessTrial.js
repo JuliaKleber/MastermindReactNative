@@ -5,40 +5,32 @@
 
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import ColorPicker from "./ColorPicker";
 import InputFields from "./InputFields";
 import CheckProposedSolutionButton from "./CheckProposedSolutionButton";
 import Output from "./Output";
 import QuestionPlayAgain from "./QuestionPlayAgain";
 import { globalStyles } from "../styles";
 
-const GuessTrial = ({
+const CurrentGuessTrial = ({
   currentColor,
   numberTrials,
   numberTrial,
   currentTrial,
   setCurrentTrial,
   solution,
+  userGuesses,
+  setUserGuesses,
   numberInputFields,
   onResetGameAppComponent,
   isResetGame,
   setIsResetGame,
 }) => {
-  const [chosenColors, setChosenColors] = useState(
-    Array(numberInputFields).fill("white")
-  );
   const [proposalSent, setProposalSent] = useState(false);
-  const [numberInRightPlace, setNumberInRightPlace] = useState(0);
-  const [numberInWrongPlace, setNumberInWrongPlace] = useState(0);
   const [endOfGame, setEndOfGame] = useState(false);
-
-  // Wenn sich der aktuelle Versuch ändert,
-  // werden alle Versuche bis zum aktuellen Versuch angezeigt.
-  // const isShown = numberTrial <= currentTrial;
 
   useEffect(() => {
     if (isResetGame) {
-      setChosenColors(Array(numberInputFields).fill("white"));
+      setUserGuesses(Array(numberTrials).fill(Array(numberInputFields).fill("white")));
       setProposalSent(false);
       setEndOfGame(false);
       if (numberTrial === numberTrials) {
@@ -54,12 +46,12 @@ const GuessTrial = ({
         currentTrial={currentTrial}
         numberTrial={numberTrial}
         currentColor={currentColor}
-        chosenColors={chosenColors}
-        setChosenColors={setChosenColors}
+        userGuesses={userGuesses}
+        setUserGuesses={setUserGuesses}
       />
       <CheckProposedSolutionButton
         solution={solution}
-        chosenColors={chosenColors}
+        userGuesses={userGuesses}
         numberInputFields={numberInputFields}
         currentTrial={currentTrial}
         setCurrentTrial={setCurrentTrial}
@@ -76,9 +68,7 @@ const GuessTrial = ({
           numberInWrongPlace={numberInWrongPlace}
           numberInputFields={numberInputFields}
           currentTrial={currentTrial}
-          numberTrial={numberTrial}
           numberTrials={numberTrials}
-          solution={solution}
         />
       )}
       {endOfGame && (
@@ -103,4 +93,4 @@ const styles = StyleSheet.create ({
   },
 });
 
-export default GuessTrial;
+export default CurrentGuessTrial;

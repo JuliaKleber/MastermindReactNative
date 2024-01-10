@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, ScrollView,StyleSheet } from "react-native";
-import GuessTrial from "./components/GuessTrial";
+import CurrentGuessTrial from "./components/CurrentGuessTrial";
+import OldGuessTrial from "./components/OldGuessTrial";
 import ColorPicker from "./components/ColorPicker";
 import Instruction from "./components/Instruction";
 import { globalStyles } from "./styles";
@@ -34,9 +35,11 @@ const setColorsSolution = () => {
 
 const App = () => {
   const [currentColor, setCurrentColor] = useState("white");
-  const [currentTrial, setCurrentTrial] = useState(1);
+  const [currentTrial, setCurrentTrial] = useState(0);
   const [isResetGame, setIsResetGame] = useState(false);
   const [solution, setSolution] = useState(() => setColorsSolution());
+  const [userGuesses, setUserGuesses] = useState(Array(numberTrials).fill(Array(numberInputFields).fill("white")));
+  const [qualityOfGuesses, setQualityOfGuesses] = useState(Array(numberTrials).fill(Array(2).fill(0)));
 
   // Falls der Spieler noch mal spielen will, wird das Spiel zurückgesetzt.
   const handleResetGame = () => {
@@ -49,26 +52,39 @@ const App = () => {
     <ScrollView>
       <View style={globalStyles.container}>
         <ColorPicker
-            colors={colors}
-            numberColors={colors.length}
-            setCurrentColor={setCurrentColor}
-            isResetGame={isResetGame}
-          />
+          colors={colors}
+          numberColors={colors.length}
+          setCurrentColor={setCurrentColor}
+          isResetGame={isResetGame}
+        />
+        <CurrentGuessTrial
+          colors={colors}
+          currentColor={currentColor}
+          numberTrials={numberTrials}
+          numberTrial={currentTrial}
+          currentTrial={currentTrial}
+          setCurrentTrial={setCurrentTrial}
+          solution={solution}
+          userGuesses={userGuesses}
+          setUserGuesses={setUserGuesses}
+          numberInputFields={numberInputFields}
+          onResetGameAppComponent={handleResetGame}
+          isResetGame={isResetGame}
+          setIsResetGame={setIsResetGame}
+        />
         <View style={styles.containerReverseRow}>
           {Array(currentTrial)
             .fill()
             .map((_, index) => (
-              <GuessTrial
-                key={`trial${index + 1}`}
-                colors={colors}
+              <OldGuessTrial
+                key={`trial${index}`}
                 currentColor={currentColor}
                 numberTrials={numberTrials}
-                numberTrial={index + 1}
+                numberTrial={index}
                 currentTrial={currentTrial}
-                setCurrentTrial={setCurrentTrial}
-                solution={solution}
+                userGuesses={userGuesses}
+                qualityOfGuesses={qualityOfGuesses}
                 numberInputFields={numberInputFields}
-                onResetGameAppComponent={handleResetGame}
                 isResetGame={isResetGame}
                 setIsResetGame={setIsResetGame}
               />
@@ -89,7 +105,7 @@ export default App;
 const styles = StyleSheet.create({
   containerReverseRow: {
     flexDirection: "row",
-    flexWrap: "wrap",
+    flexWrap: "wrap-reverse",
     justifyContent: "center",
   },
 });
