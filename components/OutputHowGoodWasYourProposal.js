@@ -3,15 +3,14 @@ import { View, Text, StyleSheet } from "react-native";
 import { globalStyles } from "../styles";
 
 const OutputHowGoodWasYourProposal = ({
-  numberInRightPlace,
-  numberInWrongPlace,
-  numberTrial,
+  qualityOfGuesses,
   currentTrial,
+  numberTrial,
 }) => {
-  const colorInRightPlace = numberInRightPlace === 1 ? "Farbe" : "Farben";
-  const colorInWrongPlace = numberInWrongPlace === 1 ? "Farbe" : "Farben";
-  const verbInRightPlace = numberInRightPlace === 1 ? "ist" : "sind";
-  const verbInWrongPlace = numberInWrongPlace === 1 ? "ist" : "sind";
+  const colorInRightPlace = qualityOfGuesses[numberTrial][0] === 1 ? "Farbe" : "Farben";
+  const colorInWrongPlace = qualityOfGuesses[numberTrial][1] === 1 ? "Farbe" : "Farben";
+  const verbInRightPlace = qualityOfGuesses[numberTrial][0] === 1 ? "ist" : "sind";
+  const verbInWrongPlace = qualityOfGuesses[numberTrial][1] === 1 ? "ist" : "sind";
 
   return (
     <View>
@@ -19,7 +18,7 @@ const OutputHowGoodWasYourProposal = ({
         <View>
           <View style={{ flexDirection: 'row', flexWrap: 'nowrap' }}>
             <Text style={[globalStyles.bold, globalStyles.textSize]}>
-              {numberInRightPlace}{' '}
+              {qualityOfGuesses[numberTrial][0]}{' '}
             </Text>
             <Text style={globalStyles.textSize}>
               {colorInRightPlace} {verbInRightPlace}{' '}
@@ -33,7 +32,7 @@ const OutputHowGoodWasYourProposal = ({
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'nowrap' }}>
             <Text style={[globalStyles.bold, globalStyles.textSize]}>
-              {numberInWrongPlace}{' '}
+              {qualityOfGuesses[numberTrial][1]}{' '}
             </Text>
             <Text style={globalStyles.textSize}>
               {colorInWrongPlace} {verbInWrongPlace} an der{' '}
@@ -52,7 +51,7 @@ const OutputHowGoodWasYourProposal = ({
         <View>
           <View style={globalStyles.containerVertical}>
             <Text style={[globalStyles.bold, styles.smallText]}>
-              {numberInRightPlace}{' '}
+              {qualityOfGuesses[numberTrial][0]}{' '}
             </Text>
             <Text style={styles.smallText}>
               richtige Stelle
@@ -60,7 +59,7 @@ const OutputHowGoodWasYourProposal = ({
           </View>
           <View style={globalStyles.containerVertical}>
             <Text style={[globalStyles.bold, styles.smallText]}>
-              {numberInWrongPlace}{' '}
+              {qualityOfGuesses[numberTrial][1]}{' '}
             </Text>
             <Text style={styles.smallText}>
               falsche Stelle

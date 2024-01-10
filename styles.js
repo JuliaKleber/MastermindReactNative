@@ -31,6 +31,21 @@ export const globalStyles = StyleSheet.create({
     }),
   },
 
+  button: {
+    width: 150,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: 'mediumorchid',
+    borderRadius: 10,
+  },
+
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+
   title: {
     textAlign: 'center',
     fontSize: 18,
@@ -55,5 +70,9 @@ export const globalStyles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
     color: 'mediumorchid'
+  },
+
+  marginTop: {
+    marginTop: 20,
   },
 });

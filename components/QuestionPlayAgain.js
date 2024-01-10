@@ -1,16 +1,15 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { globalStyles } from "../styles";
 
-const QuestionPlayAgain = ({ onResetGameAppComponent }) => {
-  const handleResetGame = () => {
-    onResetGameAppComponent();
-  };
+const QuestionPlayAgain = ({ onResetGame }) => {
 
   return (
-    <View style={globalStyles.container}>
+    <View style={[globalStyles.container, globalStyles.marginTop]}>
       <Text style={globalStyles.textSize}>Möchtest du noch mal spielen?</Text>
-      <Button onPress={handleResetGame} title="Ja" />
+      <TouchableOpacity onPress={onResetGame} style={[globalStyles.button, globalStyles.marginTop]}>
+        <Text style={globalStyles.buttonText}>Ja</Text>
+      </TouchableOpacity>
     </View>
   );
 }
