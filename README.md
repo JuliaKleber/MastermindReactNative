@@ -45,6 +45,11 @@ To install the project, follow these steps:
    ```bash
    npm start
 
+## Screenshot
+
+![image](https://github.com/JuliaKleber/MastermindReactNative/assets/142741980/d06aa979-25f4-406d-8509-0d00931c90e6)
+
+
 ## Components
 
 The game consists of several components, for example:
