@@ -76,6 +76,6 @@ export default OutputHowGoodWasYourProposal;
 
 const styles = StyleSheet.create({
   smallText: {
-    fontSize: 10,
+    fontSize: 15,
   }
 });

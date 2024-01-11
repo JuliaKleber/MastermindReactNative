@@ -17,7 +17,7 @@ const OldGuessTrial = ({
 
   return (
     <View style={[globalStyles.card, styles.smallCard]}>
-      <Text style={styles.smallTitle}>
+      <Text style={globalStyles.title}>
         {numberTrial + 1}. Versuch
       </Text>
       <InputFields
@@ -41,11 +41,6 @@ const styles = StyleSheet.create({
     marginRight: 0,
     marginTop: 5,
     marginBottom: 5,
-  },
-  smallTitle: {
-    fontSize: 12,
-    fontWeight: "bold",
-    textAlign: "center",
   },
 });
 
