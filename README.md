@@ -57,7 +57,7 @@ The game consists of several components, for example:
 - ColorPicker: Allows the player to select a color.
 - CurrentGuessTrial: Represents the current guess that has not yet been submitted by the user.
 - OldGuessTrial: Represents a single guess attempt that has already been submitted by the user.
-- Instruction: Displays the game rules and 
+- Instruction: Displays the game rules and instructions.
 
 ## Author
 
