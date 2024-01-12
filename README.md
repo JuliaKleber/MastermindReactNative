@@ -55,11 +55,9 @@ To install the project, follow these steps:
 The game consists of several components, for example:
 
 - ColorPicker: Allows the player to select a color.
-- GuessTrial: Represents a single guess attempt.
-- Instruction: Displays the game rules and instructions.
-- CheckProposedSolutionButton: Submits the player's guess for evaluation.
-- Output: Displays the result of the player's guess.
-- QuestionPlayAgain: Asks the player if they want to play again after the game ends.
+- CurrentGuessTrial: Represents the current guess that has not yet been submitted by the user.
+- OldGuessTrial: Represents a single guess attempt that has already been submitted by the user.
+- Instruction: Displays the game rules and 
 
 ## Author
 
